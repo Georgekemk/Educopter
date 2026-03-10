@@ -7,12 +7,12 @@ Conflicts=arduplane.service ardurover.service
 
 [Service]
 Type=simple
-WorkingDirectory=/home/georgekemkers
+WorkingDirectory=/home/pi
 
-ExecStart=/home/georgekemkers/arducopter \
+ExecStart=/home/pi/arducopter \
   --serial1 udp:0.0.0.0:14550 \
   --serial3 /dev/serial0 \
-  --defaults /home/georgekemkers/ardupilot.parm
+  --defaults /home/pi/ardupilot.parm
 
 Restart=on-failure
 RestartSec=5
