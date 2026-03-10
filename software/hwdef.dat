@@ -13,10 +13,10 @@ define AP_COMPASS_PROBING_ENABLED 1
 BARO BMP280 I2C:1:0x76
 
 
-define HAL_BOARD_LOG_DIRECTORY "/home/georgekemkers/ardupilot/logs"
-define HAL_BOARD_TERRAIN_DIRECTORY "/home/georgekemkers/ardupilot/terrain"
-define HAL_BOARD_STORAGE_DIRECTORY "/home/georgekemkers/ardupilot"
-define HAL_PARAM_DEFAULTS_PATH "/home/georgekemkers/ardupilot.parm"
+define HAL_BOARD_LOG_DIRECTORY "/home/pi/ardupilot/logs"
+define HAL_BOARD_TERRAIN_DIRECTORY "/home/pi/ardupilot/terrain"
+define HAL_BOARD_STORAGE_DIRECTORY "/home/pi/ardupilot"
+define HAL_PARAM_DEFAULTS_PATH "/home/pi/ardupilot.parm"
 
 #            NAME      BUS SUBDEV MODE       BPW CS_PIN         LOWSPD HIGHSPD
 LINUX_SPIDEV "mpu9250" 0   0      SPI_MODE_0 8   SPI_CS_KERNEL  1*MHZ  10*MHZ
