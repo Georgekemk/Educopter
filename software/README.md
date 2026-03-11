@@ -66,7 +66,16 @@ Example:
 
 ---
 
-## First boot
+# 2. Preparing the Build Environment (Linux VM)
+
+ArduPilot is built on a **Linux virtual machine** rather than directly on the Raspberry Pi. This allows faster compilation and avoids installing unnecessary development tools on the Pi, whilst enabling an easy ssh connection. Alternatively ssh can be performed using VSCode.
+
+I used Oracle VirtualBox box to run a version of Ubuntu but you can use any VM that you prefer. The guide for to install Ubuntu on Oracle VirtualBox can be found here:
+https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox
+
+---
+
+## 3. First boot
 
 Insert the SD card into the Raspberry Pi and power it on using the 5V usbc port.
 
@@ -83,15 +92,6 @@ Update packages:
 `sudo apt update`
 
 `sudo apt upgrade`
-
----
-
-# 3. Preparing the Build Environment (Linux VM)
-
-ArduPilot is built on a **Linux virtual machine** rather than directly on the Raspberry Pi. This allows faster compilation and avoids installing unnecessary development tools on the Pi, whilst enabling an easy ssh connection. Alternatively ssh can be performed using VSCode.
-
-I used Oracle VirtualBox box to run a version of Ubuntu but you can use any VM that you prefer. The guide for to install Ubuntu on Oracle VirtualBox can be found here:
-https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox
 
 ---
 
