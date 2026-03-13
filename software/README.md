@@ -1,4 +1,4 @@
-# EDUCOPTER – Running ArduPilot Educopter board on a Raspberry Pi
+# EDUCOPTER – Running Educopter binary on a Raspberry Pi
 
 This repository documents the software setup required to run **ArduPilot Educopter on a Raspberry Pi** using the custom **EDUCOPTER hardware configuration**.
 
@@ -12,7 +12,9 @@ It includes:
 - MAVLink communication with MAVProxy and Mission Planner
 - System service configuration
 
-The aim of this readme is to allow the firmware to be replicated .
+The aim of this readme is to:
+1. Allow the reader to directly replictae this project
+2. Detail the steps that would enable the creation of a new Linux board
 
 ---
 
@@ -33,8 +35,6 @@ The Lite version is recommended because:
 - it avoids unnecessary desktop processes that can slow the ArduPilot main loop
 
 Insert an SD card into a reader and flash the image using the imager.
-
-<img width="1343" height="935" alt="image" src="https://github.com/user-attachments/assets/718cb751-6a05-4ec5-9f44-ef1384e45b4c" />
 
 ---
 
@@ -60,9 +60,6 @@ Example:
 - **SSID Name:** `LaptopSSID_name`
 - **Password:** `**********`
 - **Country:** `GB`
-
-### Screenshot placeholder
-![WiFi Setup](screenshots/wifi-setup.png)
 
 ---
 
@@ -111,9 +108,6 @@ Initialise the submodules:
 
 `git submodule update --init --recursive`
 
-### Screenshot placeholder
-![Clone ArduPilot](screenshots/clone-ardupilot.png)
-
 ---
 
 # 5. Adding the EDUCOPTER Hardware Definition
@@ -137,9 +131,6 @@ This file defines:
 - Log file directories
 
 used by the EDUCOPTER board.
-
-### Screenshot placeholder
-![hwdef Location](screenshots/hwdef-location.png)
 
 ---
 
@@ -181,14 +172,38 @@ File:
 
 `libraries/AP_HAL_Linux/HAL_Linux_Class.cpp`
 
-Add the EDUCOPTER subtype to the board detection logic.
+This file:
+- Defines board subtype
+-  Maps RC Input Protocol
+-  Maps RC Output (signal to the ESCs)
 
-### Why this is needed
+The modification steps are as follows:
 
-This ensures that when ArduPilot starts, it initialises the correct Linux hardware configuration for the EDUCOPTER board.
+1. Add EDUCOPTER board subtype definition
+   
+<img src="images/HAL_Linux_Class.cpp board_definition.png" width="400">
 
-### Screenshot placeholder
-![HAL_Linux_Class Change](screenshots/hal-linux-class.png)
+2. Add EDUCOPTER RCInputProtocols definition
+
+<img src="images/HAL_Linux_Class.cpp RCInput.png" width="400">
+
+But what exactly does the line do?
+
+static RCInput_RCProtocol rcinDriver{"/dev/ttyAMA3", nullptr};
+
+This line instantiates the RCInput_RCProtocol driver, which is responsible for reading RC receiver data from a Linux serial device and passing it to ArduPilot’s AP_RCProtocol decoder. This decoder can interpret multiple RC protocols such as iBUS, SBUS and CRSF.
+
+For the EDUCOPTER board, the receiver is connected to the Raspberry Pi UART exposed as /dev/ttyAMA3. The second constructor argument is set to nullptr, indicating that no secondary 115200-baud RC input device is used.
+
+On the Raspberry Pi, /dev/ttyAMA3 corresponds to the UART mapped to GPIO4 and GPIO5, which is used to receive the serial RC data from the receiver. The configuration of this UART is discussed in greater detail in Step X of this README.
+
+3. Add EDUCOPTER RCOutput definition
+
+<img src="images/HAL_Linux_Class.cpp RCOutput.png" width="400">
+
+static RCOutput_PCA9685 rcoutDriver(i2c_mgr_instance.get_device_ptr(1, PCA9685_PRIMARY_ADDRESS), 0, 0, RPI_GPIO_<17>());
+
+This line was kept from OBAL. EDUCOPTER uses the PCA9685 to generate PWM signals to the ESCs, in turn driving the motors. 'RPI_GPIO_<17>()' corresponds to the pin that connects the PCA enable switch. EDUCOPTER has this line grounded to reduce complexity, but the line has been left in for educational purposes
 
 ---
 
