@@ -43,11 +43,11 @@ Insert an SD card into a reader and flash the image using the imager.
 For simplicity and to avoid directory errors in the Pi's terminal, set the following details for the Raspberry Pi
 
 - **Name** 'pi'
-- **Password** '<insert password here>'
+- **Password** 'password'
 
 ## Enable WiFi using the laptop hotspot
 
-Ensuring the Pi sends connects to your laptop hotspot makes ssh to Pi possible with the laptop connected to any network
+Ensuring the Pi connects to your laptop hotspot makes ssh to Pi possible with the laptop connected to any network
 
 To allow the Pi to connect to the laptop hotspot during first boot:
 
@@ -58,7 +58,7 @@ To allow the Pi to connect to the laptop hotspot during first boot:
 Example:
 
 - **SSID Name:** `LaptopSSID_name`
-- **Password:** `********`
+- **Password:** `**********`
 - **Country:** `GB`
 
 ### Screenshot placeholder
@@ -97,13 +97,15 @@ Update packages:
 
 # 4. Clone the ArduPilot source code
 
+**IMPORTANT** Clone the ardupilot repository on your Linux virtual machine. When you eventually build the board subtype using waf, this will save time and also keeps the workflow organised. Of course you can clone it straight to the Pi, but building the binary will take approx 45mins to an hour each time.
+
 In a terminal on the VM, clone the repository:
 
 `git clone https://github.com/ArduPilot/ardupilot.git`
 
 Enter the directory:
 
-`cd ¬/ardupilot`
+`cd ~/ardupilot`
 
 Initialise the submodules:
 
@@ -120,14 +122,19 @@ Create the directory:
 
 `ardupilot/libraries/AP_HAL_Linux/hwdef/EDUCOPTER`
 
+You can do this using the command:
+
+`sudo nano ardupilot/libraries/AP_HAL_Linux/hwdef/EDUCOPTER`
+
 Copy the `hwdef.dat` file from this repository into that directory.
 
 This file defines:
 
-- sensors
-- SPI devices
+- Sensors
+- Communication methods (I2C, SPI)
 - GPIO mappings
-- board subtype
+- Board subtype
+- Log file directories
 
 used by the EDUCOPTER board.
 
@@ -144,6 +151,7 @@ These modifications allow the system to:
 
 - recognise the new board subtype
 - enable Raspberry Pi specific utilities
+- configure flight sensors
 - configure RC input handling (SBUS)
 
 Only the relevant lines should be changed so that the setup remains easier to maintain when ArduPilot updates.
@@ -163,7 +171,7 @@ Add a new board subtype definition for EDUCOPTER.
 This allows ArduPilot to distinguish the board from other Linux targets such as Navio or BeagleBone.
 
 ### Screenshot placeholder
-![AP_HAL_Boards Change](screenshots/ap-hal-boards.png)
+
 
 ---
 
