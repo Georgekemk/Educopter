@@ -94,7 +94,7 @@ Update packages:
 
 # 4. Clone the ArduPilot source code
 
-**IMPORTANT** Clone the ardupilot repository on your Linux virtual machine. When you eventually build the board subtype using waf, this will save time and also keeps the workflow organised. Of course you can clone it straight to the Pi, but building the binary will take approx 45mins to an hour each time.
+**IMPORTANT** Clone the ardupilot repository on your Linux virtual machine. When you eventually build the board subtype using waf, this will save time and also keeps the workflow organised. Of course you can clone it straight to the Pi, but building the binary will take approximately 45 minutes on a Pi 5. On a Pi zero, the build would likely take days!
 
 In a terminal on the VM, clone the repository:
 
@@ -223,8 +223,7 @@ This allows the board to use Raspberry Pi specific functionality such as:
 - CPU detection
 - system utilities
 
-### Screenshot placeholder
-![Util_RPI Change](screenshots/util-rpi.png)
+<img src="images/Util_RPI.cpp.png" width="400">
 
 ---
 
@@ -234,14 +233,9 @@ File:
 
 `libraries/AP_HAL_Linux/RCInput_RCProtocol.cpp`
 
-Add support for the RC input configuration used by the EDUCOPTER board.
+You must also include the board definition in the .cpp and .h file to use RCInput_Protocol
 
-### Why this is needed
-
-The board uses a serial RC protocol for receiver input, so the Linux HAL must initialise the correct RC input driver.
-
-### Screenshot placeholder
-![RCInput_RCProtocol CPP Change](screenshots/rcinput-cpp.png)
+<img src="images/RCInput_RCProtocol.cpp.png" width="400">
 
 ---
 
@@ -251,14 +245,7 @@ File:
 
 `libraries/AP_HAL_Linux/RCInput_RCProtocol.h`
 
-Add the necessary declarations for the EDUCOPTER board’s RC input handling.
-
-### Why this is needed
-
-This ensures the RC input class supports the required board-specific configuration.
-
-### Screenshot placeholder
-![RCInput_RCProtocol H Change](screenshots/rcinput-h.png)
+<img src="images/RCInput_RCProtocol.h.png" width="400">
 
 ---
 
@@ -288,15 +275,17 @@ Install the required Python packages:
 
 If additional ArduPilot Python dependencies are required on your machine, install them into the same environment.
 
-### Screenshot placeholder
-![Python Venv](screenshots/ardupilot-venv.png)
+This part of the process can be quite painful. Syntax errors are common and as ArduPilot continues to develop its code, new dependencies will likely appear. Terminal should prompt you to download the correcr packages when you go to build EDUCOPTER or your own custom Linux board.
 
 ---
 
 # 8. Building ArduPilot
 
-From inside the ArduPilot directory, with the virtual environment activated, configure the build for the EDUCOPTER board:
+**First** make sure that you have saved all changes in the source code, and that you've created hwdef.dat in the correct directory.
 
+Then from inside the ArduPilot directory, with the virtual environment activated, wipe any previous builds and configure the build for the EDUCOPTER board:
+
+`./waf distclean`
 `./waf configure --board=EDUCOPTER`
 
 Then build ArduCopter:
@@ -311,31 +300,24 @@ If successful, the binary will appear at:
 
 Using a dedicated Python environment avoids conflicts with system Python packages and keeps the build reproducible.
 
-### Screenshot placeholder
-![Waf Build](screenshots/waf-build.png)
+**NOTE**
+To build a custom board, replace EDUCOPTER with the name of your board defined in the source code edits. Remember to be be case sensitive!
 
 ---
 
 # 9. Copying the Binary to the Raspberry Pi
 
-Use `scp` to transfer the binary to the Raspberry Pi.
+Use `scp` to transfer the binary to the Raspberry Pi:
 
-Example:
+`scp build/EDUCOPTER/bin/arducopter pi@<pi_IP_address>:/home/pi/`
 
-`scp build/EDUCOPTER/bin/arducopter pi@raspberrypi:/home/pi/`
-
-Rename it if desired:
-
-`mv arducopter /home/pi/arducopter`
-
-### Screenshot placeholder
-![SCP Transfer](screenshots/scp-transfer.png)
+The binary is now ready on the Pi.
 
 ---
 
 # 10. Installing MAVProxy on the Raspberry Pi
 
-MAVProxy is used for MAVLink communication and debugging.
+MAVProxy is a python application and is used for MAVLink communication with the arducopter binary and a ground control station like Mission Planner. It is not strictly necessary but is helpful for streamlining communication and debugging. I would highly recommend using it for EDUCOPTER and any other board you may build.
 
 Create a Python virtual environment on the Pi named `mavproxy-venv`:
 
@@ -351,14 +333,13 @@ Install MAVProxy:
 
 If required, install any supporting Python packages into the same environment.
 
-### Screenshot placeholder
-![MAVProxy Venv](screenshots/mavproxy-venv.png)
+Ardupilot documentation lists the modules usually required, but like the previous python package downloads performed in the venv inside the Linux VM, this process can be tricky and demands patience.
 
 ---
 
 # 11. MAVLink Communication
 
-ArduPilot sends MAVLink telemetry via UDP.
+ArduPilot sends MAVLink telemetry to MAVProxy and Mission Planner over UDP or TCP. In this project UDP is used because it provides a lightweight, low-latency connection suitable for real-time telemetry streaming. You dob't need to run any of this sections code in the Pis terminal; it purely exists for educational purposes.
 
 Example configuration in `ardupilot.service`:
 
@@ -383,6 +364,10 @@ Copy it to:
 
 `/etc/systemd/system/`
 
+You should now have the directory:
+
+`/etc/systemd/system/ardupilot.service`
+
 Enable the service:
 
 `sudo systemctl enable ardupilot`
@@ -395,8 +380,9 @@ Check the status:
 
 `sudo systemctl status ardupilot`
 
-### Screenshot placeholder
-![Systemd Service](screenshots/systemd-service.png)
+**NOTE** If you make any changes to the .service file after originally writing it, you must reload the file before using it:
+
+`sudo systemctl daemon-reload`
 
 ---
 
@@ -410,8 +396,7 @@ Copy it to the location expected by the binary, for example:
 
 This file contains the startup parameters required for the EDUCOPTER configuration, including telemetry and GPS serial settings.
 
-### Screenshot placeholder
-![Parameter File](screenshots/parm-file.png)
+
 
 ---
 
