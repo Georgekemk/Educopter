@@ -442,3 +442,5 @@ This next step is detailed in the README.md document located in the 'flying' fol
 This repository documents the **software setup only**. Hardware wiring, PCB layout, power distribution, and sensor integration are documented in the README.md in the hardware section of this repository.
 
 Where ArduPilot source files must be edited, only the relevant changes should be documented rather than copying entire upstream files. This makes the instructions more robust to future ArduPilot updates.
+
+All images in these instructions are located in /software/images for reference.
