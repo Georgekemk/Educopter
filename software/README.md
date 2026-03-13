@@ -351,9 +351,6 @@ Example MAVProxy command:
 
 `mavproxy.py --master=udp:127.0.0.1:14550`
 
-### Screenshot placeholder
-![MAVProxy Connection](screenshots/mavproxy-connection.png)
-
 ---
 
 # 11. Systemd Service
@@ -395,6 +392,41 @@ Copy it to the location expected by the binary, for example:
 `/home/pi/ardupilot.parm`
 
 This file contains the startup parameters required for the EDUCOPTER configuration, including telemetry and GPS serial settings.
+
+
+# 14. Download Mission Planner on your PC
+
+Click the ArduPilot documentation link below to download Mission Planner for your Operating System. Don't do this on your Linux VW, download it straight onto your laptop.
+
+https://ardupilot.org/planner/docs/mission-planner-installation.html
+
+Once downloaded, follow the steps until you reach the main page and leave it for now.
+
+# 13. Running ardupilot and MAVProxy
+
+If you've made it to this step, congratulations! You're ready to run your built binary on the Pi and connect it via MAVProxy to Mission Planner. Follow these steps in order:
+
+1. Check that ardupilot is running:
+
+`sudo systemctl status ardupilot`
+
+If it isn't, restart it and check the status again:
+
+`sudo systemctl restart ardupilot`
+`sudo systemctl status ardupilot`
+
+2. Run MAVProxy and connect to ardupilot and Mission Planner:
+
+`mavproxy.py --master=udp:127.0.0.1:14550 --out=udp:<laptop_IP_address>:14550`
+
+Make sure to insert the IP address of whatever device is running Mission Planner. For example:
+
+`mavproxy.py --master=udp:127.0.0.1:14550 --out=udp:192.168.137.1:14550`
+
+Whilst the Pi isn't connected to the physical board, you will get Barometer erros and likely lots of binary symbols displaying on your screen. This is normal and will go away when the board is connected.
+
+3. On your laptop, open Mission Planner and connect to MAVProxy via UDP port 14550. The connect icon is on the top left of the screen.
+
 
 
 
