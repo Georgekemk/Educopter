@@ -353,7 +353,7 @@ Example MAVProxy command:
 
 ---
 
-# 11. Systemd Service
+# 12. Systemd Service
 
 The repository includes an example `ardupilot.service` file.
 
@@ -383,7 +383,7 @@ Check the status:
 
 ---
 
-# 12. Parameter File
+# 13. Parameter File
 
 The repository also includes an `ardupilot.parm` file.
 
@@ -402,7 +402,7 @@ https://ardupilot.org/planner/docs/mission-planner-installation.html
 
 Once downloaded, follow the steps until you reach the main page and leave it for now.
 
-# 13. Running ardupilot and MAVProxy
+# 15. Running ardupilot and MAVProxy
 
 If you've made it to this step, congratulations! You're ready to run your built binary on the Pi and connect it via MAVProxy to Mission Planner. Follow these steps in order:
 
@@ -427,38 +427,18 @@ Whilst the Pi isn't connected to the physical board, you will get Barometer erro
 
 3. On your laptop, open Mission Planner and connect to MAVProxy via UDP port 14550. The connect icon is on the top left of the screen.
 
+<img src="images/Mission Planner connection.png" width="400">
 
+Without the Pi connected to the board, no telemetry data will appear in the Mission Planner dashboard. In messages, you will see MAVProxy displaying the same errors you saw previously.
 
+But congratulations! You've set up the software for EDUCOPTER and you're ready to connect your board!
 
----
-
-# Repository Contents
-
-`software/`
-- `README.md`
-- `ardupilot.service`
-- `ardupilot.parm`
-
-`hwdef/`
-- `README.md`
-- `EDUCOPTER/hwdef.dat`
-
----
-
-# Future Work
-
-Future improvements may include:
-
-- automated patch scripts for ArduPilot source modifications
-- wiring diagrams
-- hardware schematics
-- troubleshooting notes
-- flight testing results
+This next step is detailed in the README.md document located in the 'flying' folder.
 
 ---
 
 # Notes
 
-This repository documents the **software setup only**. Hardware wiring, PCB layout, power distribution, and sensor integration should be documented separately in the hardware section of the project.
+This repository documents the **software setup only**. Hardware wiring, PCB layout, power distribution, and sensor integration are documented in the README.md in the hardware section of this repository.
 
 Where ArduPilot source files must be edited, only the relevant changes should be documented rather than copying entire upstream files. This makes the instructions more robust to future ArduPilot updates.
