@@ -170,8 +170,7 @@ Add a new board subtype definition for EDUCOPTER.
 
 This allows ArduPilot to distinguish the board from other Linux targets such as Navio or BeagleBone.
 
-### Screenshot placeholder
-<img src="images/HAL_Boards.h.png" width="600">
+<img src="images/HAL_Boards.h.png" width="400">
 
 
 ---
