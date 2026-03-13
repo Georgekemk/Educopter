@@ -203,7 +203,7 @@ On the Raspberry Pi, /dev/ttyAMA3 corresponds to the UART mapped to GPIO4 and GP
 
 static RCOutput_PCA9685 rcoutDriver(i2c_mgr_instance.get_device_ptr(1, PCA9685_PRIMARY_ADDRESS), 0, 0, RPI_GPIO_<17>());
 
-This line was kept from OBAL. EDUCOPTER uses the PCA9685 to generate PWM signals to the ESCs, in turn driving the motors. 'RPI_GPIO_<17>()' corresponds to the pin that connects the PCA enable switch. EDUCOPTER has this line grounded to reduce complexity, but the line has been left in for educational purposes
+This line was written in the OBAL project and has been kept. EDUCOPTER uses the PCA9685 to generate PWM signals to the ESCs, in turn driving the motors. 'RPI_GPIO_<17>()' corresponds to the pin that connects the PCA enable switch. EDUCOPTER has this line grounded to reduce complexity, but the line has been left in for educational purposes
 
 ---
 
