@@ -1,5 +1,7 @@
 # EDUCOPTER
 
+<img src="hardware/images/EDUCOPTER_design.jpeg" width="800">
+
 Welcome to the **EDUCOPTER GitHub repository**.
 
 This project has been developed based on the work of the **OBAL project**, which demonstrated that a Raspberry Pi can be used as the single flight computer for a custom ArduPilot flight controller. Thanks go to **Mohammad Hefny** for his contribution to custom Linux flight controller developement.
