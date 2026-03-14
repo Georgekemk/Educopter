@@ -18,6 +18,20 @@ The aim of this readme is to:
 
 ---
 
+# Tips and Tricks
+
+This repository was published in April 2026. Please be aware that ArduPilot may have changed board name definition locations for Linux since this publication. If you find these instructions aren't resulting in a correct binary build, I'd recommend using the grep function in Linux terminal to search for other Linux boards. This way you can see which files and corresponding sections to edit. For example, in your ardupilot directory:
+
+`grep -rn "_OBAL" libraries/`
+
+or
+
+`grep -rn "NAVIO2" libraries/`
+
+Then observe which files these definitions are located in and add your board definitions if necessary.
+
+---
+
 # 1. Preparing the Raspberry Pi
 
 ## Install Raspberry Pi OS
