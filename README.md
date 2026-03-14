@@ -1,4 +1,4 @@
-# EDUCOPTER
+<h1 align="center">EDUCOPTER</h1>
 
 <p align="center">
   <img src="flying/images/EDUCOPTER_design.jpg" width="500"/>
