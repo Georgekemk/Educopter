@@ -49,6 +49,8 @@ For simplicity and to avoid directory errors in the Pi's terminal, set the follo
 
 Ensuring the Pi connects to your laptop hotspot makes ssh to Pi possible with the laptop connected to any network
 
+First, change your hotspot settings on your laptop to 2.4GHz band. This is the only band width the Pi can connect to and will cause countless hours of stress and confusement if left at 5GHz!
+
 To allow the Pi to connect to the laptop hotspot during first boot:
 
 1. In Raspberry Pi Imager open **Advanced Options**
