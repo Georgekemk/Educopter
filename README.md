@@ -1,6 +1,8 @@
 # EDUCOPTER
 
-<img src="flying/images/EDUCOPTER_design.jpeg" width="800">
+<p align="center">
+  <img src="flying/images/EDUCOPTER_design.jpeg" width="700">
+</p>
 
 Welcome to the **EDUCOPTER GitHub repository**.
 
