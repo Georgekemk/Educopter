@@ -1,12 +1,10 @@
 # EDUCOPTER
 
-## Welcome
-
 Welcome to the **EDUCOPTER GitHub repository**.
 
-This project has been developed based on the excellent work of the **OBAL project**, which demonstrated that a Raspberry Pi can be used as the core of a custom ArduPilot flight controller. Special thanks go to **Mohammad Hefny** for his contribution to the OBAL project and for making the development of accessible Linux-based flight controllers possible.
+This project has been developed based on the work of the **OBAL project**, which demonstrated that a Raspberry Pi can be used as the single flight computer for a custom ArduPilot flight controller. Thanks go to **Mohammad Hefny** for his contribution to custom Linux flight controller developement.
 
-EDUCOPTER builds upon this foundation with the goal of creating a **simpler, highly replicable drone platform designed specifically for education and experimentation**.
+EDUCOPTER builds upon this foundation with the goal of creating a **simpler, highly replicable custom flight controller designed specifically for education and experimentation**.
 
 ---
 
@@ -20,8 +18,8 @@ Key characteristics of the design include:
 
 * A **Raspberry Pi–based Linux flight controller**
 * A **single-sided PCB** for easy manufacturing
-* Only the **essential sensors and actuators** required to fly with ArduPilot
-* A complete set of **documentation and instructions** allowing others to replicate the project from scratch
+* Only **essential sensors and actuators** required to fly with ArduPilot
+* A complete set of **documentation and instructions** allowing others to replicate the project from scratch with little experience in this area
 
 The project demonstrates how a fully functional ArduPilot drone can be built with **minimal hardware complexity**, while still providing a powerful and flexible autopilot platform.
 
@@ -44,7 +42,6 @@ This repository is organised into several sections to make it easy to understand
 
 ```
 EDUCOPTER/
-│
 ├── software/
 ├── hardware/
 ├── BOM/
@@ -65,12 +62,14 @@ This includes:
 * Supporting scripts and configuration files
 * Instructions for installing and running the software on the Raspberry Pi
 
-A detailed README inside this folder explains:
+A detailed README inside this folder contains instructions for software implementation and **must be read**. It explains:
 
-* Environment setup
+* Raspberry Pi setup and connection
+* Linux Virtual Environment setup
 * Compiling ArduPilot
-* Configuring the board
+* Configuring the EDUCOPTER board
 * Connecting to ground control software
+* Running the firmware and testing
 
 ```
 software/
@@ -85,8 +84,8 @@ The **hardware** section explains how to construct the EDUCOPTER flight controll
 
 This includes:
 
-* PCB design files
-* Circuit diagrams
+* PCB gerber files and images
+* Circuit schematics
 * Instructions for manufacturing the board
 * Guidance for soldering components and assembling the hardware
 
@@ -126,7 +125,7 @@ This section contains:
 
 * Images of the completed drone
 * Instructions for connecting all components
-* Guidance on configuring ArduPilot
+* Guidance on flight configurations
 * Steps for synchronising the radio controller, sensors, and motors
 * Instructions for performing the first flight
 
