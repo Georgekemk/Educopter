@@ -23,6 +23,8 @@ Key characteristics of the design include:
 * A **Raspberry Pi–based Linux flight controller**
 * A **single-sided PCB** for easy manufacturing
 * Only **essential sensors and actuators** required to fly with ArduPilot
+* ArduPilot source code changes for Linux porting
+* Parameter and Service files to run alonside ArduPilot and MAVProxy
 * A complete set of **documentation and instructions** allowing others to replicate the project from scratch with little experience in this area
 
 The project demonstrates how a fully functional ArduPilot drone can be built with **minimal hardware complexity**, while still providing a powerful and flexible autopilot platform.
