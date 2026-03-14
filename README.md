@@ -14,7 +14,7 @@ EDUCOPTER builds upon this foundation with the goal of creating a **simpler, hig
 
 # What is EDUCOPTER?
 
-**EDUCOPTER** is a minimal **ArduPilot-compatible quadcopter platform** designed to be easily reproduced by students, researchers, and hobbyists.
+**EDUCOPTER** is a **minimal ArduPilot-compatible flight controller platform** designed to be easily reproduced by students, researchers, and hobbyists. Although this repository demonstrates its use on a quadcopter, the EDUCOPTER board can be used with any vehicle supported by ArduPilot, including rovers, fixed-wing aircraft, submarines, and multirotors.
 
 Unlike many flight controller designs that prioritise performance or compactness, EDUCOPTER prioritises **simplicity and reproducibility**.
 
