@@ -12,7 +12,11 @@ WorkingDirectory=/home/pi
 ExecStart=/home/pi/arducopter \
   --serial1 udp:0.0.0.0:14550 \
   --serial3 /dev/serial0 \
-  --defaults /home/pi/ardupilot.parm
+  --defaults /home/pi/ardupilot.parm #& \
+sleep 5 && \
+/home/pi/mavproxy-venv/bin/python /home/pi/mavproxy-venv/bin/mavproxy.py \
+  --master=127.0.0.1:14550 \
+  --out=udp:0.0.0.0:14551
 
 Restart=on-failure
 RestartSec=5
