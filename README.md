@@ -1,7 +1,7 @@
 <h1 align="center">EDUCOPTER</h1>
 
 <p align="center">
-  <img src="flying/images/EDUCOPTER_overall_design.jpg" width="500"/>
+  <img src="flying/images/EDUCOPTER_overall_design.jpeg" width="500"/>
 </p>
 
 Welcome to the **EDUCOPTER GitHub repository**.
