@@ -3,7 +3,7 @@ Description=ArduPilot Copter for Linux OBAL Board
 After=network-online.target systemd-modules-load.service time-sync.target
 Wants=network-online.target time-sync.target
 Documentation=https://ardupilot.org/copter/docs/common-autopilots.html
-Conflicts=arduplane.service ardurover.service
+Conflicts=arduplane.service ardurover.service ardusub.service
 
 [Service]
 Type=simple
