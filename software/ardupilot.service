@@ -3,20 +3,16 @@ Description=ArduPilot Copter for Linux OBAL Board
 After=network-online.target systemd-modules-load.service time-sync.target
 Wants=network-online.target time-sync.target
 Documentation=https://ardupilot.org/copter/docs/common-autopilots.html
-Conflicts=arduplane.service ardurover.service ardusub.service
+Conflicts=arduplane.service ardurover.service
 
 [Service]
 Type=simple
-WorkingDirectory=/home/pi
+WorkingDirectory=/home/georgekemkers
 
-ExecStart=/home/pi/arducopter \
+ExecStart=/home/georgekemkers/arducopter \
   --serial1 udp:0.0.0.0:14550 \
   --serial3 /dev/serial0 \
-  --defaults /home/pi/ardupilot.parm #& \
-sleep 5 && \
-/home/pi/mavproxy-venv/bin/python /home/pi/mavproxy-venv/bin/mavproxy.py \
-  --master=127.0.0.1:14550 \
-  --out=udp:0.0.0.0:14551
+  --defaults /home/georgekemkers/ardupilot.parm
 
 Restart=on-failure
 RestartSec=5
