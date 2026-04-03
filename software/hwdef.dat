@@ -1,4 +1,4 @@
-# EDUCOPTER board hwdef settings
+# EDUCOPTER board Hardware Definition
 
 # IMUs:
 IMU Invensense SPI:mpu9250 ROTATION_NONE
