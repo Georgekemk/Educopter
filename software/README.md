@@ -79,16 +79,7 @@ Example:
 
 ---
 
-# 2. Preparing the Build Environment (Linux VM)
-
-ArduPilot is built on a **Linux virtual machine** rather than directly on the Raspberry Pi. This allows faster compilation and avoids installing unnecessary development tools on the Pi, whilst enabling an easy ssh connection. Alternatively ssh can be performed using VSCode.
-
-I used Oracle VirtualBox box to run a version of Ubuntu but you can use any VM that you prefer. The guide for to install Ubuntu on Oracle VirtualBox can be found here:
-https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox
-
----
-
-## 3. First boot
+## 2. First boot
 
 Insert the SD card into the Raspberry Pi and power it on using the 5V usbc port.
 
@@ -108,7 +99,37 @@ Update packages:
 
 ---
 
-# 4. Clone the ArduPilot source code
+# 3. Enabling SPI, I2C and UART on the Raspberry Pi
+
+In order to enable the Pi's external pins, run this command in the terminal:
+
+`sudo raspi-config`
+
+Navigate to Interface Options →
+
+Then select the following:
+1. SPI → Enable
+2. I2C → Enable
+3. Serial Port:
+  a. Login shell over serial → Disable
+  b. Serial hardware → Enable
+
+With these steps completed, reboot the Pi using
+
+`sudo reboot`
+
+---
+
+# 4. Preparing the Build Environment (Linux VM)
+
+ArduPilot is built on a **Linux virtual machine** rather than directly on the Raspberry Pi. This allows faster compilation and avoids installing unnecessary development tools on the Pi, whilst enabling an easy ssh connection. Alternatively ssh can be performed using VSCode.
+
+I used Oracle VirtualBox box to run a version of Ubuntu but you can use any VM that you prefer. The guide for to install Ubuntu on Oracle VirtualBox can be found here:
+https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox
+
+---
+
+# 5. Clone the ArduPilot source code
 
 **IMPORTANT** Clone the ardupilot repository on your Linux virtual machine. When you eventually build the board subtype using waf, this will save time and also keeps the workflow organised. Of course you can clone it straight to the Pi, but building the binary will take approximately 45 minutes on a Pi 5. On a Pi zero, the build would likely take days!
 
@@ -126,7 +147,7 @@ Initialise the submodules:
 
 ---
 
-# 5. Adding the EDUCOPTER Hardware Definition
+# 6. Adding the EDUCOPTER Hardware Definition
 
 Create the directory:
 
@@ -150,7 +171,7 @@ used by the EDUCOPTER board.
 
 ---
 
-# 6. Required Source Code Modifications
+# 7. Required Source Code Modifications
 
 A small number of changes must be made to ArduPilot's Linux HAL so the EDUCOPTER board is recognised correctly.
 
@@ -265,7 +286,7 @@ File:
 
 ---
 
-# 7. Creating the Python Build Environment
+# 8. Creating the Python Build Environment
 
 ArduPilot uses **Python tools during compilation**, so the build should be done inside a virtual environment.
 
@@ -295,7 +316,7 @@ This part of the process can be quite painful. Syntax errors are common and as A
 
 ---
 
-# 8. Building ArduPilot
+# 9. Building ArduPilot
 
 **First** make sure that you have saved all changes in the source code, and that you've created hwdef.dat in the correct directory.
 
@@ -321,7 +342,7 @@ To build a custom board, replace EDUCOPTER with the name of your board defined i
 
 ---
 
-# 9. Copying the Binary to the Raspberry Pi
+# 10. Copying the Binary to the Raspberry Pi
 
 Use `scp` to transfer the binary to the Raspberry Pi:
 
@@ -331,7 +352,7 @@ The binary is now ready on the Pi.
 
 ---
 
-# 10. Installing MAVProxy on the Raspberry Pi
+# 11. Installing MAVProxy on the Raspberry Pi
 
 MAVProxy is a python application and is used for MAVLink communication with the arducopter binary and a ground control station like Mission Planner. It is not strictly necessary but is helpful for streamlining communication and debugging. I would highly recommend using it for EDUCOPTER and any other board you may build.
 
@@ -353,7 +374,7 @@ Ardupilot documentation lists the modules usually required, but like the previou
 
 ---
 
-# 11. MAVLink Communication
+# 12. MAVLink Communication
 
 ArduPilot sends MAVLink telemetry to MAVProxy and Mission Planner over UDP or TCP. In this project UDP is used because it provides a lightweight, low-latency connection suitable for real-time telemetry streaming. You dob't need to run any of this sections code in the Pis terminal; it purely exists for educational purposes.
 
@@ -369,7 +390,7 @@ Example MAVProxy command:
 
 ---
 
-# 12. Systemd Service
+# 13. Systemd Service
 
 The repository includes an example `ardupilot.service` file.
 
@@ -399,7 +420,7 @@ Check the status:
 
 ---
 
-# 13. Parameter File
+# 14. Parameter File
 
 The repository also includes an `ardupilot.parm` file.
 
@@ -410,7 +431,7 @@ Copy it to the location expected by the binary, for example:
 This file contains the startup parameters required for the EDUCOPTER configuration, including telemetry and GPS serial settings.
 
 
-# 14. Download Mission Planner on your PC
+# 15. Download Mission Planner on your PC
 
 Click the ArduPilot documentation link below to download Mission Planner for your Operating System. Don't do this on your Linux VW, download it straight onto your laptop.
 
@@ -418,7 +439,7 @@ https://ardupilot.org/planner/docs/mission-planner-installation.html
 
 Once downloaded, follow the steps until you reach the main page and leave it for now.
 
-# 15. Running ardupilot and MAVProxy
+# 16. Running ardupilot and MAVProxy
 
 If you've made it to this step, congratulations! You're ready to run your built binary on the Pi and connect it via MAVProxy to Mission Planner. Follow these steps in order:
 
