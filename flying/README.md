@@ -1,6 +1,8 @@
-# 2. Assembling the EDUCOPTER Quadcopter
+# Assembling the EDUCOPTER Quadcopter
 
-## Installing the Holybro Power Distribution Board
+With the EDUCOPTER board successfully built and the EDUCOPTER binary installed along with MAVProxy and the system service files created, you're now ready to build the drone. Ensure the Raspberry Pi is connected to the EDUCOPTER board and follow these steps in order.
+
+## 1. Installing the Holybro Power Distribution Board
 
 Place the **Holybro PM07 power distribution board** inside the drone frame base plate.
 
@@ -17,7 +19,7 @@ Insert image here
 
 ---
 
-## Mounting the EDUCOPTER Flight Controller
+## 2. Mounting the EDUCOPTER Flight Controller
 
 Fix the EDUCOPTER board to the top of the drone frame using a **3D printed mounting structure** designed for your frame geometry.
 
@@ -28,34 +30,29 @@ Insert image here
 Ensure:
 
 - the board is rigidly mounted
-- the IMU is firmly secured
-- there is no wobble in the controller mounting
+- the IMU is firmly secured and can't wobble or vibrate
 - the Raspberry Pi USB-C port remains accessible
 
-Loose IMU mounting will cause incorrect attitude estimation during flight.
+Loose IMU mounting will cause incorrect attitude estimation during flight and control issues.
 
 ---
 
-## Connecting the GPS and RC Receiver
+## 3. Connecting the GPS and RC Receiver
 
 Connect the GPS module and RC receiver to the EDUCOPTER board.
 
 Connections:
 
-- GPS → GPS UART port
-- SBUS receiver → RC input UART port
+- GPS → 4 pin header with 5V, GND, RX, TX
+- SBUS receiver → 3 pin header with GND, 5V, SBUS
 
-Ensure:
-
-- correct voltage rails are used
-- wiring polarity is correct
-- the SBUS inversion circuit is operating correctly if used
+Ensure that the cables connect to the correct corresponding pins by referring to the circuit schematic and gerber files. The GPS RX must connect to the Pi TX pin, and the GPS TX to the Pi RX.
 
 Insert image here
 
 ---
 
-## Connecting ESC Signal Outputs to the PCA9685
+## 4. Connecting ESC Signal Outputs to the PCA9685
 
 Attach the ESC signal wires to the signal and ground pins of the PCA9685.
 
@@ -74,7 +71,7 @@ Incorrect ordering will prevent stable flight.
 
 ---
 
-## Mounting the Motors
+## 5. Mounting the Motors
 
 Attach the motors to the drone frame arms using the supplied nuts and bolts.
 
@@ -86,27 +83,19 @@ Motor rotation direction will be verified later during calibration.
 
 ---
 
-## Installing the Battery and Power Connections
+## 6. Installing the Battery and Power Connections
 
-Attach the battery to the underside of the drone frame.
+Attach the battery to the underside of the drone frame. It is recommended to do this using a velcro mechanism so batteries can be easily substituted if needed, but any connect will suffice.
 
-Connect power as follows:
+Connect the power splitter to the battery output, and connect the USBC to the Pi and the other connector to the power distribution board. 
 
-Battery  
-→ power distribution splitter  
-→ Holybro PM07  
-→ 5V 3A regulator  
-→ Raspberry Pi USB-C power input
+Insert diagram here
 
-Ensure:
-
-- the Raspberry Pi receives a stable regulated 5V supply
-- polarity is correct before connecting the battery
-- the Raspberry Pi is not powered directly from ESC rails
+The Pi should power on, the PCA will hold a solid red light and the GPS and RC receiver should light up. It is recommended at this point to ssh to the Pi so that it can be easily shutdown if errors occur.
 
 ---
 
-## Performing ArduPilot Calibration
+## 7. Performing ArduPilot Calibration
 
 Once assembly is complete, calibration can begin using Mission Planner.
 
@@ -115,6 +104,8 @@ Complete the following calibrations:
 - accelerometer calibration
 - compass calibration
 - RC calibration
+
+This can be done in the setup section of Mission Planner, where detailed instructions are located.
 
 ESC calibration depends on ESC type. The standard ArduPilot ESC calibration process works for most ESCs but should be checked against manufacturer documentation before use.
 
