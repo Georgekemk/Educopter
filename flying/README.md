@@ -25,7 +25,7 @@ Fix the EDUCOPTER board to the top of the drone frame using a **3D printed mount
 
 An example mounting structure is shown below.
 
-Insert image here
+<img src="images/3D_printed_connection.png" width="400">
 
 Ensure:
 
