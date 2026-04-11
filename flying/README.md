@@ -136,6 +136,12 @@ Observe PWM outputs from the PCA9685 channels.
 
 ## Verifying Motor Rotation Direction
 
+Using telemetry dash board in Mission Planner, tilt the drone in the x and y direction until the pitch changes. This can be used to find the forward direction of the drone. Alternatively, rotate the drone until the yaw reads 0 degrees. The front of the drone will now be facing North.
+
+This will help to determine the correct motor rotation directions.
+
+INSERT IMAGE
+
 Use the Mission Planner motor test function to confirm correct motor rotation.
 
 Expected QUAD-X rotation directions:
@@ -144,6 +150,8 @@ Expected QUAD-X rotation directions:
 - front left → counter-clockwise
 - rear left → clockwise
 - rear right → counter-clockwise
+
+INSERT IMAGE
 
 If rotation is incorrect, swap any two ESC-motor wires.
 
