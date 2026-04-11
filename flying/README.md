@@ -151,7 +151,7 @@ Expected QUAD-X rotation directions:
 - rear left → clockwise
 - rear right → counter-clockwise
 
-INSERT IMAGE
+<img src="images/QUADX.png" width="400">
 
 If rotation is incorrect, swap any two ESC-motor wires.
 
