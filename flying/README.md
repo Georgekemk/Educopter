@@ -123,6 +123,8 @@ arm throttle
 
 or by holding the RC throttle hard left for several seconds.
 
+<img src="images/armthrottle_testing.mov" width="400">
+
 Test outputs by adjusting:
 
 - throttle
