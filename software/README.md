@@ -1,4 +1,4 @@
-# EDUCOPTER – Running Educopter binary on a Raspberry Pi
+# EDUCOPTER SOFTWARE – Running Educopter binary on a Raspberry Pi
 
 This repository documents the software setup required to run **ArduPilot Educopter on a Raspberry Pi** using the custom **EDUCOPTER hardware configuration**.
 
@@ -127,7 +127,9 @@ ArduPilot is built on a **Linux virtual machine** rather than directly on the Ra
 I used Oracle VirtualBox box to run a version of Ubuntu but you can use any VM that you prefer. The guide for to install Ubuntu on Oracle VirtualBox can be found here:
 https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox
 
-As a visual aid, the general overview of the workflow on the VM and the Raspberry Pi is shown by the diagram below
+As a visual aid, the general overview of the workflow on the VM and the Raspberry Pi is shown by the diagram below.
+
+<img src="images/WM_Pi_Workflow.png" width="400">
 
 ---
 
