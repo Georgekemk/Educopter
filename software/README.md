@@ -36,7 +36,7 @@ Then observe which files these definitions are located in and add your board def
 
 ## Install Raspberry Pi OS
 
-Download **Raspberry Pi Imager** from the Raspberry Pi website onto your laptop.
+Download **Raspberry Pi Imager** from the Raspberry Pi website to your laptop.
 
 Install the following image:
 
@@ -126,6 +126,8 @@ ArduPilot is built on a **Linux virtual machine** rather than directly on the Ra
 
 I used Oracle VirtualBox box to run a version of Ubuntu but you can use any VM that you prefer. The guide for to install Ubuntu on Oracle VirtualBox can be found here:
 https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox
+
+As a visual aid, the general overview of the workflow on the VM and the Raspberry Pi is shown by the diagram below
 
 ---
 
@@ -286,7 +288,46 @@ File:
 
 ---
 
-# 8. Creating the Python Build Environment
+# 8. Building ArduPilot
+
+**First** make sure that you have saved all changes in the source code, and that you've created hwdef.dat in the correct directory.
+
+Then from inside the ArduPilot directory, with the virtual environment activated, wipe any previous builds and configure the build for the EDUCOPTER board:
+
+`./waf distclean`
+
+`./waf configure --board=EDUCOPTER`
+
+Then build ArduCopter:
+
+`./waf copter`
+
+If successful, the binary will appear at:
+
+`build/EDUCOPTER/bin/arducopter`
+
+### Why a virtual environment is used
+
+Using a dedicated Python environment avoids conflicts with system Python packages and keeps the build reproducible.
+
+**NOTE**
+To build a custom board, replace EDUCOPTER with the name of your board defined in the source code edits. Remember to be be case sensitive!
+
+---
+
+# 9. Copying the Binary to the Raspberry Pi
+
+First, power on the Pi and connect to it via ssh as directed in step 2.
+
+On the Virtual Machine, use `scp` to transfer the binary to the Raspberry Pi:
+
+`scp build/EDUCOPTER/bin/arducopter pi@<pi_IP_address>:/home/pi/`
+
+The binary is now ready on the Pi.
+
+---
+
+# 10. Creating the Python Build Environment
 
 ArduPilot uses **Python tools during compilation**, so the build should be done inside a virtual environment.
 
@@ -314,44 +355,6 @@ If additional ArduPilot Python dependencies are required on your machine, instal
 
 This part of the process can be quite painful. Syntax errors are common and as ArduPilot continues to develop its code, new dependencies will likely appear. Terminal should prompt you to download the correcr packages when you go to build EDUCOPTER or your own custom Linux board.
 
----
-
-# 9. Building ArduPilot
-
-**First** make sure that you have saved all changes in the source code, and that you've created hwdef.dat in the correct directory.
-
-Then from inside the ArduPilot directory, with the virtual environment activated, wipe any previous builds and configure the build for the EDUCOPTER board:
-
-`./waf distclean`
-
-`./waf configure --board=EDUCOPTER`
-
-Then build ArduCopter:
-
-`./waf copter`
-
-If successful, the binary will appear at:
-
-`build/EDUCOPTER/bin/arducopter`
-
-### Why a virtual environment is used
-
-Using a dedicated Python environment avoids conflicts with system Python packages and keeps the build reproducible.
-
-**NOTE**
-To build a custom board, replace EDUCOPTER with the name of your board defined in the source code edits. Remember to be be case sensitive!
-
----
-
-# 10. Copying the Binary to the Raspberry Pi
-
-Use `scp` to transfer the binary to the Raspberry Pi:
-
-`scp build/EDUCOPTER/bin/arducopter pi@<pi_IP_address>:/home/pi/`
-
-The binary is now ready on the Pi.
-
----
 
 # 11. Installing MAVProxy on the Raspberry Pi
 
