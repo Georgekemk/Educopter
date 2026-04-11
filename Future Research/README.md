@@ -1,6 +1,6 @@
 # Research Presentation and ideas for future designs
 
-This project was developed not only as a working quadcopter flight controller, but as a **research platform demonstrating how ArduPilot can be ported to a minimal Linux-based hardware architecture**. A key objective of EDUCOPTER is to make the internal structure of the ArduPilot Linux Hardware Abstraction Layer (HAL) easier to understand and extend for educational use.
+This project was developed not only as a working ArduPilot controller for Planes, Quadcopters, Rover and Subs, but as a **research platform demonstrating how ArduPilot can be ported to a minimal Linux-based hardware architecture**. A key objective of EDUCOPTER is to make the internal structure of the ArduPilot Linux Hardware Abstraction Layer (HAL) easier to understand and extend for educational use.
 
 Two architecture diagrams are included within this repository to support this goal.
 
