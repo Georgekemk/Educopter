@@ -48,7 +48,7 @@ Connections:
 
 Ensure that the cables connect to the correct corresponding pins by referring to the circuit schematic and gerber files. The GPS RX must connect to the Pi TX pin, and the GPS TX to the Pi RX.
 
-Insert image here
+<img src="images/RC_and_GPS_connection.png" width="400">
 
 ---
 
@@ -63,9 +63,9 @@ ESC numbering follows the PCA9685 channel order from left to right:
 - ESC 3 → Channel 2
 - ESC 4 → Channel 3
 
-The **QUAD-X motor configuration must be followed**.
+<img src="images/PCA_ESC_attachment.jpeg" width="400">
 
-Insert diagram here
+The **QUAD-X motor configuration must be followed**.
 
 Incorrect ordering will prevent stable flight.
 
@@ -89,7 +89,7 @@ Attach the battery to the underside of the drone frame. It is recommended to do 
 
 Connect the power splitter to the battery output, and connect the USBC to the Pi and the other connector to the power distribution board. 
 
-Insert diagram here
+<img src="images/Battery_connection.png" width="400">
 
 The Pi should power on, the PCA will hold a solid red light and the GPS and RC receiver should light up. It is recommended at this point to ssh to the Pi so that it can be easily shutdown if errors occur.
 
@@ -107,6 +107,9 @@ Complete the following calibrations:
 
 This can be done in the setup section of Mission Planner, where detailed instructions are located.
 
+<img src="images/callibration_missionplanner.png" width="400">
+
+
 ESC calibration depends on ESC type. The standard ArduPilot ESC calibration process works for most ESCs but should be checked against manufacturer documentation before use.
 
 ---
@@ -123,8 +126,6 @@ arm throttle
 
 or by holding the RC throttle hard left for several seconds.
 
-<img src="images/armthrottle_testing.mov" width="400">
-
 Test outputs by adjusting:
 
 - throttle
@@ -132,7 +133,9 @@ Test outputs by adjusting:
 - pitch
 - roll
 
-Observe PWM outputs from the PCA9685 channels.
+Observe PWM outputs from the PCA9685 channels
+
+<img src="images/Servo_Output.png" width="400">
 
 ---
 
