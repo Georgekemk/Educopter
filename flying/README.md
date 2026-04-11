@@ -50,6 +50,8 @@ Ensure that the cables connect to the correct corresponding pins by referring to
 
 <img src="images/RC_and_GPS_connection.png" width="400">
 
+Use a structure to elevate the GPS and RC receiver above the board to minimise inteference to the GPS from power components and to increase the range of the receiver.
+
 ---
 
 ## 4. Connecting ESC Signal Outputs to the PCA9685
