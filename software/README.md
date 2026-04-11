@@ -323,6 +323,7 @@ This part of the process can be quite painful. Syntax errors are common and as A
 Then from inside the ArduPilot directory, with the virtual environment activated, wipe any previous builds and configure the build for the EDUCOPTER board:
 
 `./waf distclean`
+
 `./waf configure --board=EDUCOPTER`
 
 Then build ArduCopter:
