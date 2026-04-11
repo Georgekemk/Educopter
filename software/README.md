@@ -463,7 +463,7 @@ Make sure to insert the IP address of whatever device is running Mission Planner
 
 Whilst the Pi isn't connected to the physical board, you will get Barometer erros and likely lots of binary symbols displaying on your screen. This is normal and will go away when the board is connected.
 
-3. On your laptop, open Mission Planner and connect to MAVProxy via UDP port 14550. The connect icon is on the top left of the screen.
+3. On your laptop, open Mission Planner and connect to MAVProxy via UDP port 14550. The connect icon is on the top right of the screen.
 
 <img src="images/Mission Planner connection.png" width="400">
 
