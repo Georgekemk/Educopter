@@ -140,7 +140,7 @@ Using telemetry dash board in Mission Planner, tilt the drone in the x and y dir
 
 This will help to determine the correct motor rotation directions.
 
-INSERT IMAGE
+<img src="images/callibration_missionplanner.png" width="400">
 
 Use the Mission Planner motor test function to confirm correct motor rotation.
 
