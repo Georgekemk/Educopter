@@ -78,5 +78,13 @@ The expected output is 0x71 for an IMU9250. If the device does not appear during
 
 The RC receiver transmits using SBUS protocol which is inverted by the EDUCOPTER board. The inversion can be tested using an oscilloscope and connecting both contacts with the input and output of the inversion circuit. The results should show a waveform like in the image below:
 
+<img src="images/SBUS_inversion_test.png" width="600">
+
+Bytes verification can then be conducted. First, confirm the correct uart ports are enabled:
+
+`ls /dev/ttyAMA*`
+
+AMA3 and AMA0 should appear as both are used for the EDUCOPTER design.
+
 
 
