@@ -53,9 +53,10 @@ EDUCOPTER/
 ├── hardware/
 ├── BOM/
 └── flying/
+├── Future Research/
 ```
 
-Each section contains documentation and files required for a specific stage of the project.
+Each section contains documentation and files required for a specific stage of the project. The future research section summarises the Linux board specific porting for ArduPilot, and gives some examples of future projects that can build from the EDUCOPTER platform.
 
 ---
 
