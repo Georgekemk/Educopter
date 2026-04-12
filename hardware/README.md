@@ -138,16 +138,7 @@ All required Gerber files are included in:
 
 The board used in this project was manufactured using a **Makera Carvera PCB milling machine**.
 
-A **Standard Operating Procedure (SOP)** for using the Carvera is included in this repository:
-
-
-Typical milling steps:
-
-1. Secure copper board in the milling bed  
-2. Import Gerber files into the milling software  
-3. Perform isolation milling  
-4. Drill component holes  
-5. Cut the board outline  
+A **Standard Operating Procedure (SOP)** for using the Carvera can be found on Makera's website or youtube channel.
 
 ---
 
@@ -163,21 +154,6 @@ The EDUCOPTER PCB was designed with **approximately 0.35 mm trace spacing**, mak
 - Solder  
 - Tweezers  
 - Flux (recommended)
-
-### Soldering Steps
-
-1. Start with **small passive components**
-2. Install **ICs and sensors**
-3. Add **connectors and header pins**
-4. Inspect solder joints for bridges
-
-### Completed Board
-
-*(Insert photo of fully soldered board here)*
-
-Refer to the PCB layout images in:
-
-
 ---
 
 # 5. Connect the RC Receiver and GPS
