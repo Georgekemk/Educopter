@@ -35,4 +35,42 @@ If these devices do not appear during the I2C scan, this may be due to several h
 | Devices are not the expected model (e.g. BMP180 instead of BMP280) | Verify the exact sensor part number printed on the module. Some breakout boards look similar but use different I2C addresses and drivers. |
 | Components are not receiving power | Check for solder bridges or damaged PCB traces. Use a digital multimeter to confirm ~3.3 V between Vcc and GND on each device. |
 | Components are faulty | Replace the device or test with a known working module to confirm whether the sensor is damaged. |
+
+
 ## 2. SPI device tests ##
+
+Detecting SPI devices on a Raspberry Pi 4 is different from I2C. There is no equivalent to i2cdetect for SPI because SPI devices do not have addresses. 
+
+First, confirm that the SPI interface exists:
+
+`ls /dev/spidev*`
+
+If this returns nothing, follow the same step X in the software section and return to this point.
+
+Next, install the SPI testing tool:
+
+`sudo apt update`
+
+`sudo apt install python3-spidev`
+
+Run the following in your terminal:
+
+`python3 - <<EOF
+import spidev
+spi = spidev.SpiDev()
+spi.open(0,0)
+spi.max_speed_hz = 1000000
+print(hex(spi.xfer2([0x75 | 0x80, 0x00])[1]))
+EOF`
+
+The expected output is 0x71 for an IMU9250. If the device does not appear during the I2C scan, this may be due to several hardware or wiring issues:
+
+| Problem | Solution |
+|--------|----------|
+| Device is not the expected model eg GY91 | Verify the exact sensor part number printed on the module. |
+| Component is not receiving power | Check for solder bridges or damaged PCB traces. Use a digital multimeter to confirm ~3.3 V between Vcc and GND on each device. |
+| The CS pin isn't connected (common when porting your own board) | Make sure to redesign the PCB with the CS pin connected to CS0 or CS1 of the Pi |
+| Component is faulty | Replace the device or test with a known working module to confirm whether the sensor is damaged. |
+
+
+
