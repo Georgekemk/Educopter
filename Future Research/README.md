@@ -8,14 +8,8 @@ Two architecture diagrams are included within this repository to support this go
 
 <img src="images/HAL_software_architecture.png" width="800">
 
-This diagram presents the **Linux porting software architecture**, showing how the vehicle firmware interacts with the Linux HAL and how SPI, I2C and UART sensor drivers are integrated into the ArduPilot build system using `waf`.
+This diagram presents the **Linux porting software architecture**. Files highlighted in green require editing for this specific Linux board subtype, and the diagram shows how the vehicle firmware interacts with the Linux HAL and how SPI, I2C and UART sensor drivers are integrated into the ArduPilot build system using `waf`.
 
-The purpose of this diagram is to help future developers understand:
-
-- how ArduPilot interfaces with Linux hardware drivers
-- how custom Linux board subtypes are introduced
-- how sensor drivers connect to the vehicle firmware
-- how additional peripherals can be supported within the existing framework
 
 
 ## EDUCOPTER communication architecture
