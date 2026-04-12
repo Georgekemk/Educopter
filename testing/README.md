@@ -100,7 +100,7 @@ If this doesn't appear AND the circuit has already been tested using thge oscill
 
 | Problem | Solution |
 |--------|----------|
-| The receiver isn't configured for SBUS (very common) | Follow the mnual for your particular receiver and transmiitter pair to set up SBUS |
+| The receiver isn't configured for SBUS (very common) | Follow the manual for your particular receiver and transmiitter pair to set up SBUS |
 | Component is not receiving power | Check for light from the receiver. The FS iA10B trasnmits a solid red light when binded |
 | Component is faulty | Replace the device or test with a known working module to confirm whether the receiver is damaged. |
 
@@ -109,6 +109,12 @@ If this doesn't appear AND the circuit has already been tested using thge oscill
 A similar process of detecting UART input bytes can be done with the GPS module. Follow the steps described previously but instead use this command:
 
 `sudo hexdump -C /dev/ttyAMA0`
+
+This project found that when the GPS module was not connected to satellites, this method of testing could appear unreliable (where the GPS sometimes outputted nothing to terminal). The main isses with GPS moudles were found in ardupilot.parm, which will be discussed next.
+
+## Software verification ##
+
+If the previous steps were completed for all the components, hardware and wiring issues can be discounted. ANy remaining problems likely lie within the specific EDUCOPTER binary or the arupilot.service and ardupilot.parm files. There are many ways in which a board can be incorrectly ported in ArduPilot so not every fix can be discussed in this section. However, some recommendations are made based on experience gained from this project.
 
 
 
