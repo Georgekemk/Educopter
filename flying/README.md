@@ -198,4 +198,4 @@ The logs files from two seperate 30s flights were processed, and the plotted gra
 
 The flying drone attached to a safety tether is shown below:
 
-<img src="images/drone_flying.png" width="800">
+<img src="images/drone_flying.png" width="600">
