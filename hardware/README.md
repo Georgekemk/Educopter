@@ -75,8 +75,11 @@ The RC receiver uses the **SBUS protocol**, which transmits multiple RC channels
 
 SBUS can be used on many GPIO pins, but the configuration used in EDUCOPTER is:
 
-
 Before use, the UART must be **enabled on the Raspberry Pi**.
+
+A summary of hardware components and their communication methods is shown below. The black arrows represent physical connection on the PCB and the pink arrows represent connection via network port.
+
+<img src="images/flight_controller_communication_diagram.png" width="600">
 
 ---
 
