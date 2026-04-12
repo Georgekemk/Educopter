@@ -23,7 +23,7 @@ Any Linux board can be ported to AruPilot by adding the necessary defintions in 
 
 <img src="Images/flight_controller_communication_diagram.png" width="800">
 
-This diagram presents the **minimum working hardware configuration required to achieve stable quadcopter flight using ArduPilot on Linux**.
+This diagram presents a **minimal working hardware configuration required to achieve stable quadcopter flight using ArduPilot on Linux**.
 
 It highlights the communication links between:
 
@@ -35,7 +35,6 @@ It highlights the communication links between:
 - the RC receiver (UART)
 
 Together, these diagrams demonstrate both the **software integration workflow** and the **hardware communication structure** required to reproduce the EDUCOPTER platform.
-
 
 ## EDUCOPTER as a research platform
 
