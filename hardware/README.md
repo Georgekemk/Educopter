@@ -11,6 +11,10 @@ The EDUCOPTER board has been intentionally designed to be **simple to manufactur
 
 The EDUCOPTER board uses standard interfaces supported by **ArduPilot on Linux-based flight controllers**. Wherever possible, commonly used pin assignments have been used so that ArduPilot can detect and initialise sensors without extensive configuration.
 
+A summary of hardware components and their communication methods is shown below. The black arrows represent physical connection on the PCB and the pink arrows represent connection via network port.
+
+<img src="images/flight_controller_communication_diagram.png" width="600">
+
 ### Sensor Interface Overview
 
 | Device | Interface | Purpose |
@@ -77,9 +81,9 @@ SBUS can be used on many GPIO pins, but the configuration used in EDUCOPTER is:
 
 Before use, the UART must be **enabled on the Raspberry Pi**.
 
-A summary of hardware components and their communication methods is shown below. The black arrows represent physical connection on the PCB and the pink arrows represent connection via network port.
+The circuit schematic is shown below.
 
-<img src="images/flight_controller_communication_diagram.png" width="600">
+<img src="images/EDUCOPTER_schematic.png" width="600">
 
 ---
 
