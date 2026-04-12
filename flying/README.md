@@ -190,4 +190,8 @@ Happy flying!
 
 Data from the flights was stored in a log file, the directory for which has already been assigned using **ardupilot.parm**.
 
-The logs files from two seperate flights were processed, and the plotted graphs are shown below:
+The logs files from two seperate 30s flights were processed, and the plotted graphs are shown below:
+
+<img src="images/pwmoutput+pitch_results_graph.png" width="800">
+
+<img src="images/vibration+velocity_results_graph.png" width="800">
