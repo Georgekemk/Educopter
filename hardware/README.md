@@ -263,6 +263,12 @@ Before powering the board:
 ✔ Ensure GPS TX/RX wiring is correct  
 ✔ Confirm correct power polarity  
 
+The completed board is shown from the front and back below:
+
+<img src="images/EDUCOPTER_board_backside.png" width="800">
+
+<img src="images/EDUCOPTER_board_frontside.png" width="800">
+
 ---
 
 # Next Step
