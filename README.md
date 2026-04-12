@@ -132,9 +132,7 @@ The **flying** section demonstrates the final stage of the project.
 This section contains:
 
 * Images of the completed drone
-* Instructions for connecting all components
-* Guidance on flight configurations
-* Steps for synchronising the radio controller, sensors, and motors
+* Instructions for integrating the EDUCOPTER board with a quadcopter design
 * Instructions for performing the first flight
 
 ```
@@ -142,19 +140,6 @@ flying/
 └── README.md
 ```
 
-### Example Flight Images
-
-*(Insert images here)*
-
-```
-[Image placeholder – completed drone]
-
-[Image placeholder – drone in flight]
-
-[Image placeholder – system setup]
-```
-
----
 
 # Replicating the Project
 
