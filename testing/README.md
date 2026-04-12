@@ -102,7 +102,15 @@ If this doesn't appear AND the circuit has already been tested using thge oscill
 |--------|----------|
 | The receiver isn't configured for SBUS (very common) | Follow the mnual for your particular receiver and transmiitter pair to set up SBUS |
 | Component is not receiving power | Check for light from the receiver. The FS iA10B trasnmits a solid red light when binded |
-| Component is faulty | Replace the device or test with a known working module to confirm whether the sensor is damaged. |
+| Component is faulty | Replace the device or test with a known working module to confirm whether the receiver is damaged. |
+
+## B. GPS module ##
+
+A similar process of detecting UART input bytes can be done with the GPS module. Follow the steps described previously but instead use this command:
+
+`sudo hexdump -C /dev/ttyAMA0`
+
+
 
 
 
