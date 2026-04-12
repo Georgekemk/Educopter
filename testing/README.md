@@ -148,21 +148,37 @@ Another useful debugging approach is to browse the ArduPilot GitHub repository d
 
 Navigate to the relevant files and search for board subtype definitions and `#if` preprocessor directives to understand how these configurations are applied during compilation. This helps identify where hardware-specific logic is selected when building the vehicle firmware binary.
 
-## 3. Check the .service and .parm files ##
+## 3. Check the `.service` and `.parm` files
 
-These are the files responsible for processing the UART devices correctly.
+These files are responsible for configuring how ArduPilot accesses UART devices on the Raspberry Pi.
 
-For the EDUCOPTER build, the GPS porting was handled entirely through these files, as is common with many ArduPilot builds. The service file maps ArduPilot ports with physical raspberry Pi ports, so make sure the correct serial ports are used. Things to check:
+For the EDUCOPTER build, the GPS configuration was handled primarily through these files, as is common with many ArduPilot Linux builds. The `ardupilot.service` file maps ArduPilot SERIAL ports to physical Raspberry Pi serial devices, so it is important to ensure that the correct serial interfaces are used.
 
-1. GPS protocol set to 5 (standard ArduPilot GPS parameter)
-2. Correct baudrate used. The particalur module used in this design used 11520, hence the buad set to 115. Other modules may differ so checdk their manuals.
-3. GPS_TYPE 1. This corresponds to auto-detect so should work for any GPS module
+Things to check:
 
-For the SBUS receiver, ensure that the serial you've chosen to use in RCInput_Protocol isn't diasbled by the .parm file. This is easily done and can cause much frustration. The EDUCOPTER deisgn uses ArduPilot's SERIAL4 port, so deliberatley doesn't disable it in the .parm file.
+1. GPS protocol is set correctly:
 
-## Final advice ##
+   `SERIAL3_PROTOCOL = 5`
 
-If errors with our design persist, reach out to the ArduPilot community on its discord server or blogs page. Many people will be happy to help. Good luck!
+   This enables the GPS driver on SERIAL3.
+
+2. The correct baud rate is configured:
+
+   `SERIAL3_BAUD = 115`
+
+   The GPS module used in this project operates at 115200 baud. Other modules may require a different baud rate, so consult the module documentation if communication fails.
+
+3. GPS auto-detection is enabled:
+
+   `GPS_TYPE = 1`
+
+   This allows ArduPilot to automatically detect the connected GPS module.
+
+---
+
+## Final advice
+
+If errors persist after following these steps, consider reaching out to the ArduPilot community through the ArduPilot Discord server or the ArduPilot Discuss forum. The community is active and very supportive of new hardware porting efforts.
 
 
 
