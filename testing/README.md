@@ -72,5 +72,11 @@ The expected output is 0x71 for an IMU9250. If the device does not appear during
 | The CS pin isn't connected (common when porting your own board) | Make sure to redesign the PCB with the CS pin connected to CS0 or CS1 of the Pi |
 | Component is faulty | Replace the device or test with a known working module to confirm whether the sensor is damaged. |
 
+## 3. UART device tests ##
+
+## a. RC Receiver ##
+
+The RC receiver transmits using SBUS protocol which is inverted by the EDUCOPTER board. The inversion can be tested using an oscilloscope and connecting both contacts with the input and output of the inversion circuit. The results should show a waveform like in the image below:
+
 
 
