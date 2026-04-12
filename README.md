@@ -160,6 +160,8 @@ This project builds upon the work of the **OBAL project** and the wider **ArduPi
 
 Special thanks to **Mohammad Hefny** for his contributions to the OBAL platform and for enabling Linux-based flight controller development.
 
+Also thanks go to **Oliver Vogt** for his supervision and guidance with this project.
+
 ---
 
 # License
