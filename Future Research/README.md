@@ -6,7 +6,7 @@ Two architecture diagrams are included within this repository to support this go
 
 ## Linux porting software architecture
 
-<img src="images/HAL_software_architecture.png" width="400">
+<img src="images/HAL_software_architecture.png" width="800">
 
 This diagram presents the **Linux porting software architecture**, showing how the vehicle firmware interacts with the Linux HAL and how SPI, I2C and UART sensor drivers are integrated into the ArduPilot build system using `waf`.
 
