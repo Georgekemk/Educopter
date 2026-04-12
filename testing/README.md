@@ -84,7 +84,20 @@ Bytes verification can then be conducted. First, confirm the correct uart ports 
 
 `ls /dev/ttyAMA*`
 
-AMA3 and AMA0 should appear as both are used for the EDUCOPTER design.
+ttyAMA0 for the GPS and ttyAMA3 for the RC receiver should appear. 
+
+Next, scan for SBUS bytes:
+
+`sudo hexdump -C /dev/ttyAMA3`
+
+The expected output is shown in the image below:
+
+<img src="images/SBUS_UART_verification.png" width="600">
+
+
+
+
+
 
 
 
