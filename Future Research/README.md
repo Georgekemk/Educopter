@@ -15,11 +15,13 @@ This diagram presents the **Linux porting software architecture**. Files highlig
 3. **AP_Linux_Class.cpp** -> Defines RC Input and Output devices and methods, like PCA on I2C and SBUS over UART
 4. **RCInput_RCProtocol** -> Additional file with SBUS definitions
 
+These Linux Hardware Abstraction Layer (HAL) files are then processed by waf using the build instructions from wscript to build the EDUCOPTER binary. 
+
+Any Linux board can be ported to AruPilot by adding the necessary defintions in these files. The correct RC Input Protocol file should also be selected- the specific file shown in green is for SBUS input over UART.
+
 ## EDUCOPTER communication architecture
 
-<p align="center">
-  <img src="hardware/images/EDUCOPTER_Communication_Architecture.png" width="600"/>
-</p>
+<img src="Images/flight_controller_communication_diagram.png" width="800">
 
 This diagram presents the **minimum working hardware configuration required to achieve stable quadcopter flight using ArduPilot on Linux**.
 
