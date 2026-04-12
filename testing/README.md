@@ -74,7 +74,7 @@ The expected output is 0x71 for an IMU9250. If the device does not appear during
 
 ## 3. UART device tests ##
 
-## a. RC Receiver ##
+## A. RC Receiver ##
 
 The RC receiver transmits using SBUS protocol which is inverted by the EDUCOPTER board. The inversion can be tested using an oscilloscope and connecting both contacts with the input and output of the inversion circuit. The results should show a waveform like in the image below:
 
@@ -86,13 +86,23 @@ Bytes verification can then be conducted. First, confirm the correct uart ports 
 
 ttyAMA0 for the GPS and ttyAMA3 for the RC receiver should appear. 
 
-Next, scan for SBUS bytes:
+Next, turn on the RC transmitter (the controller) and connect to the receiver using the standard connection protocol. For the FlySkyiA10B used in this project, a bidnig plug is used for this process. Folow the instructions on FlySky's website or using youtube.
+
+Then scan for SBUS bytes:
 
 `sudo hexdump -C /dev/ttyAMA3`
 
 The expected output is shown in the image below:
 
 <img src="images/SBUS_UART_verification.png" width="600">
+
+If this doesn't appear AND the circuit has already been tested using thge oscilliscope, the issues could be:
+
+| Problem | Solution |
+|--------|----------|
+| The receiver isn't configured for SBUS (very common) | Follow the mnual for your particular receiver and transmiitter pair to set up SBUS |
+| Component is not receiving power | Check for light from the receiver. The FS iA10B trasnmits a solid red light when binded |
+| Component is faulty | Replace the device or test with a known working module to confirm whether the sensor is damaged. |
 
 
 
