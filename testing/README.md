@@ -8,7 +8,7 @@ When porting a new board to ArduPilot, several changes are required in the Linux
 
 The first step in troubleshooting is to verify the hardware functionality and wiring. This can be done by checking whether the Raspberry Pi detects the barometer, IMU, PCA9685 PWM driver, RC receiver and GPS module.
 
-## I2C device tests ##
+## 1. I2C device tests ##
 
 The two devices connected via I2C are the PCA9685 and the BMP280 barometer. They can be detected on the I2C bus using the i2c-tools package:
 
@@ -27,3 +27,12 @@ The I2C devices can then be detected using:
 `sudo i2cdetect -y 1`
 
 This should show two devices on the I2C bus as in the image below. The BMP280 should be on the 0x76 address and the PCA9685 on the 0x40.
+
+If these devices do not appear during the I2C scan, this may be due to several hardware or wiring issues:
+
+| Problem | Solution |
+|--------|----------|
+| Devices are not the expected model (e.g. BMP180 instead of BMP280) | Verify the exact sensor part number printed on the module. Some breakout boards look similar but use different I2C addresses and drivers. |
+| Components are not receiving power | Check for solder bridges or damaged PCB traces. Use a digital multimeter to confirm ~3.3 V between Vcc and GND on each device. |
+| Components are faulty | Replace the device or test with a known working module to confirm whether the sensor is damaged. |
+## 2. SPI device tests ##
