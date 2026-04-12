@@ -116,7 +116,7 @@ ESC calibration depends on ESC type. The standard ArduPilot ESC calibration proc
 
 ---
 
-## Testing RC Outputs Before Flight
+## 8. Testing RC Outputs Before Flight
 
 Ensure propellers are **not attached** before testing.
 
@@ -141,7 +141,7 @@ Observe PWM outputs from the PCA9685 channels
 
 ---
 
-## Verifying Motor Rotation Direction
+## 9. Verifying Motor Rotation Direction
 
 Using telemetry dash board in Mission Planner, tilt the drone in the x and y direction until the pitch changes. This can be used to find the forward direction of the drone. Alternatively, rotate the drone until the yaw reads 0 degrees. The front of the drone will now be facing North.
 
@@ -164,7 +164,7 @@ If rotation is incorrect, swap any two ESC-motor wires.
 
 ---
 
-## First Flight
+## 10. First Flight
 
 Once calibration and testing are complete, attach the propellers.
 
@@ -185,3 +185,9 @@ STABILIZE
 Ensure compliance with local drone regulations before flying.
 
 Happy flying!
+
+## 11. Flight Results
+
+Data from the flights was stored in a log file, the directory for which has already been assigned using **ardupilot.parm**.
+
+The logs files from two seperate flights were processed, and the plotted graphs are shown below:
