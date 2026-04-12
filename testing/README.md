@@ -116,7 +116,15 @@ This project found that when the GPS module was not connected to satellites, thi
 
 ## Software verification ##
 
-If the previous steps were completed for all the components, hardware and wiring issues can be discounted. ANy remaining problems likely lie within the specific EDUCOPTER binary or the arupilot.service and ardupilot.parm files. There are many ways in which a board can be incorrectly ported in ArduPilot so not every fix can be discussed in this section. However, some recommendations are made based on experience gained from this project.
+If the previous steps were completed for all the components, hardware and wiring issues can be discounted. Any remaining problems likely lie within the specific EDUCOPTER binary or the arupilot.service and ardupilot.parm files. There are many ways in which a board can be incorrectly ported in ArduPilot so not every fix can be discussed in this section. However, some recommendations are made based on experience gained from this project.
+
+## 1. grep for other Linux builds ##
+
+To see examples of other Linux builds and how they have defined hardware, use the 'grep' command in Linux terminal to search for existing Linux boards that utilise Raspberry-Pis such as Navio2 ot OBAL.
+
+e.g.
+
+
 
 
 
