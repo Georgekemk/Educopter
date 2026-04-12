@@ -10,10 +10,10 @@ Two architecture diagrams are included within this repository to support this go
 
 This diagram presents the **Linux porting software architecture**. Files highlighted in green require editing for this specific Linux board subtype, and the diagram shows how the vehicle firmware interacts with the Linux HAL and how SPI, I2C and UART sensor drivers are integrated into the ArduPilot build system using `waf`.
 
-AP_HAL_Boards.h -> Defines Linux board subtype name
-EDUCOPTER/hwdef.dat -> Hardware defintion file defining IMU, Baro, Compass and their communication types e.g. SPI, I2C
-AP_Linux_Class.cpp -> Defines RC Input and Output devices and methods, like PCA on I2C and SBUS over UART
-RCInput_RCProtocol -> Additional file with SBUS definitions
+1. **AP_HAL_Boards.h** -> Defines Linux board subtype name
+2. **EDUCOPTER/hwdef.dat** -> Hardware defintion file defining IMU, Baro, Compass and their communication types e.g. SPI, I2C
+3. **AP_Linux_Class.cpp** -> Defines RC Input and Output devices and methods, like PCA on I2C and SBUS over UART
+4. **RCInput_RCProtocol** -> Additional file with SBUS definitions
 
 ## EDUCOPTER communication architecture
 
