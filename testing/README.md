@@ -72,6 +72,8 @@ The expected output is 0x71 for an IMU9250. If the device does not appear during
 | The CS pin isn't connected (common when porting your own board) | Make sure to redesign the PCB with the CS pin connected to CS0 or CS1 of the Pi |
 | Component is faulty | Replace the device or test with a known working module to confirm whether the sensor is damaged. |
 
+N.B. In regards to the chip select pin, it was found that any connection error with the IMU resulted in ArduPilot refusing to connect with MAVProxy over network connection. If you are experiencing this issue, this could be the problem.
+
 ## 3. UART device tests ##
 
 ## A. RC Receiver ##
@@ -114,15 +116,54 @@ This project found that when the GPS module was not connected to satellites, thi
 
 ---
 
-## Software verification ##
+## Software verification
 
-If the previous steps were completed for all the components, hardware and wiring issues can be discounted. Any remaining problems likely lie within the specific EDUCOPTER binary or the arupilot.service and ardupilot.parm files. There are many ways in which a board can be incorrectly ported in ArduPilot so not every fix can be discussed in this section. However, some recommendations are made based on experience gained from this project.
+If the previous steps were completed successfully for all components, hardware and wiring issues can largely be ruled out. Any remaining problems are therefore likely to originate from the EDUCOPTER binary configuration or the `ardupilot.service` and `ardupilot.parm` files.
 
-## 1. grep for other Linux builds ##
+There are many ways in which a Linux board can be incorrectly ported in ArduPilot, so it is not possible to cover every issue here. However, several recommendations are provided below based on experience gained during this project.
 
-To see examples of other Linux builds and how they have defined hardware, use the 'grep' command in Linux terminal to search for existing Linux boards that utilise Raspberry-Pis such as Navio2 ot OBAL.
+---
 
-e.g.
+## 1. Use `grep` to inspect existing Linux board builds
+
+To see examples of how other Linux boards define their hardware configuration, use the `grep` command to search the ArduPilot source tree for existing Raspberry Pi–based boards such as Navio2 and OBAL.
+
+For example:
+
+`grep -rn "_OBAL" ~/ardupilot/libraries/`
+
+`grep -rn "NAVIO2" ~/ardupilot/libraries/`
+
+These commands identify the files in which these board definitions appear and help locate the relevant configurations used during compilation.
+
+Reviewing these examples can provide guidance when defining new board subtypes in the Linux HAL.
+
+You can also refer to the ArduPilot architecture diagram located in the **Future Research** folder to identify which files are commonly modified during board porting.
+
+---
+
+## 2. Inspect board definitions in the ArduPilot GitHub repository
+
+Another useful debugging approach is to browse the ArduPilot GitHub repository directly and examine how existing Linux boards are implemented.
+
+Navigate to the relevant files and search for board subtype definitions and `#if` preprocessor directives to understand how these configurations are applied during compilation. This helps identify where hardware-specific logic is selected when building the vehicle firmware binary.
+
+## 3. Check the .service and .parm files ##
+
+These are the files responsible for processing the UART devices correctly.
+
+For the EDUCOPTER build, the GPS porting was handled entirely through these files, as is common with many ArduPilot builds. The service file maps ArduPilot ports with physical raspberry Pi ports, so make sure the correct serial ports are used. Things to check:
+
+1. GPS protocol set to 5 (standard ArduPilot GPS parameter)
+2. Correct baudrate used. The particalur module used in this design used 11520, hence the buad set to 115. Other modules may differ so checdk their manuals.
+3. GPS_TYPE 1. This corresponds to auto-detect so should work for any GPS module
+
+For the SBUS receiver, ensure that the serial you've chosen to use in RCInput_Protocol isn't diasbled by the .parm file. This is easily done and can cause much frustration. The EDUCOPTER deisgn uses ArduPilot's SERIAL4 port, so deliberatley doesn't disable it in the .parm file.
+
+## Final advice ##
+
+If errors with our design persist, reach out to the ArduPilot community on its discord server or blogs page. Many people will be happy to help. Good luck!
+
 
 
 
