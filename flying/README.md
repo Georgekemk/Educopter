@@ -195,3 +195,7 @@ The logs files from two seperate 30s flights were processed, and the plotted gra
 <img src="images/pwmoutput+pitch_results_graph.png" width="800">
 
 <img src="images/vibration+velocity_results_graph.png" width="800">
+
+The flying drone attached to a safety tether is shown below:
+
+<img src="images/drone_flying.png" width="800">
