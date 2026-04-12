@@ -34,7 +34,7 @@ It highlights the communication links between:
 - the GPS module (UART)
 - the RC receiver (UART)
 
-From researching other ArduPilot Linux platforms, these communication methods for each component are fairly standard, and calculations showed how using I2X for the IMU as well could potentially lead to data paackets being lost and therefore stability issues.
+From researching other ArduPilot Linux platforms, these communication methods for each component are fairly standard, and calculations showed how using I2C for the IMU as well could potentially lead to data paackets being lost and therefore stability issues.
 
 ## EDUCOPTER as a research platform
 
