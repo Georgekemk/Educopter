@@ -42,18 +42,14 @@ These are connected to the Raspberry Pi SPI bus using standard Linux ArduPilot m
 
 ---
 
-### I2C – Barometer and PCA9685
+### I2C – Barometer BMP280 and PCA9685
 
 Both the **barometer** and the **PCA9685 PWM driver** are connected using the **I2C bus**.
 
 Advantages of I2C:
 
 - Multiple devices share the same bus  
-- Only two signal wires are required  
-- Widely supported by ArduPilot drivers  
-
-Devices connected on I2C:
-
+- Only two signal wires are required
 
 ---
 
@@ -77,7 +73,7 @@ GPS **TX must connect to Pi RX**, and **GPS RX must connect to Pi TX**.
 
 The RC receiver uses the **SBUS protocol**, which transmits multiple RC channels over a serial connection.
 
-SBUS can be used on many GPIO pins, but the configuration used in EDUCOPTER is:
+SBUS can be used on many GPIO pins, but the configuration used in EDUCOPTER is UART0, using pins GPIO14 and 15.
 
 Before use, the UART must be **enabled on the Raspberry Pi**.
 
@@ -108,9 +104,7 @@ To correct this, a **simple transistor inverter circuit** is used.
 - The collector outputs a **non-inverted UART signal**
 - The pull-up resistor ensures correct logic levels
 
-### SBUS Inverter Diagram
-
-*(Insert diagram from `hardware/images` here)*
+This can be seen in the schematic in the box titled 'SBUS Inverter Circuit on UART3'
 
 
 ---
@@ -132,12 +126,11 @@ Two Gerber layers are used:
 1. **Bottom copper layer (traces)**
 2. **Top insulation layer**
 
-All **traces and solder joints are on the bottom side** of the board.
+All **traces and solder joints are on the bottom side** of the board, and the top side only electrically insulates the pins in case they touch the copper surface.
 
 ### Gerber Files
 
-All required Gerber files are included in:
-
+The gerber files are included in the hardware section of this repository.
 
 ---
 
@@ -153,7 +146,7 @@ A **Standard Operating Procedure (SOP)** for using the Carvera can be found on M
 
 Once the PCB has been manufactured, components must be soldered onto the board.
 
-The EDUCOPTER PCB was designed with **approximately 0.35 mm trace spacing**, making it relatively forgiving for manual soldering.
+The EDUCOPTER PCB was designed with **approximately 0.35 mm trace spacing**, making it relatively managable for novice solderers.
 
 ### Required Tools
 
@@ -161,6 +154,12 @@ The EDUCOPTER PCB was designed with **approximately 0.35 mm trace spacing**, mak
 - Solder  
 - Tweezers  
 - Flux (recommended)
+
+All components should be soldered to the pads on the backside of the board, shown in the image below:
+
+<img src="images/EDUCOPTER_board_backside.png" width="800">
+
+
 ---
 
 # 5. Connect the RC Receiver and GPS
@@ -192,10 +191,6 @@ Correct wiring is essential.
 | VCC | 5V |
 | GND | Ground |
 
-### GPS Wiring Diagram
-
-*(Insert wiring diagram from `hardware/images` here)*
-
 ---
 
 # 6. Power the Circuit
@@ -206,33 +201,14 @@ The EDUCOPTER board can be powered in two ways.
 
 ### Method 1 – PCB Power Pins
 
-The board includes **dedicated 5V input pins**.
+The board includes **dedicated 5V input pins**, shown in the 5V 3A Power input box in the circuit schematic.
 
-Connect:
+Connect these to a 5V DC power supply from a regulated power source.
 
-
-from a regulated power source.
-
----
 
 ### Method 2 – Raspberry Pi USB-C
 
-The board can also be powered using the Raspberry Pi **USB-C power input**, which is convenient during development.
-
----
-
-### Recommended Power Supply
-
-For reliable operation, use:
-
-
-This ensures sufficient current for:
-
-- Raspberry Pi
-- Sensors
-- PWM driver
-- GPS
-- Receiver
+The board can also be powered using the Raspberry Pi **USB-C power input**, which is the primary method used for this design. A DC--DC buck converter with a usbc connector on the end is included in the BOM, and details of how to connect this are included in the 'flying' section of this repository.
 
 ---
 
@@ -241,14 +217,11 @@ This ensures sufficient current for:
 Before powering the board:
 
 ✔ Check for solder bridges  
-✔ Confirm correct sensor orientation  
-✔ Verify UART and I2C connections  
+✔ Confirm correct sensor orientation   
 ✔ Ensure GPS TX/RX wiring is correct  
 ✔ Confirm correct power polarity  
 
-The completed board is shown from the front and back below:
-
-<img src="images/EDUCOPTER_board_backside.png" width="800">
+The completed board is with the GPS and RC receiver units connected is shown below:
 
 <img src="images/EDUCOPTER_board_frontside.png" width="800">
 
