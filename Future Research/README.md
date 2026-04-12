@@ -38,15 +38,13 @@ From researching other ArduPilot Linux platforms, these communication methods fo
 
 ## EDUCOPTER as a research platform
 
-Unlike commercial flight controllers, EDUCOPTER is intentionally designed as a **foundation for experimentation rather than a finished compact autopilot product**.
+Unlike commercial flight controllers, EDUCOPTER is intentionally designed as a **foundation for experimentation rather than a finished compact autopilot product**. EDUCOPTER builds from the research conducted by the OBAL project, and aims to include enough detail to fully replicate the design, as well as sharing information on custom Linux porting within ArduPilot.
 
-The simplified architecture allows future users to:
+The simplified base architecture allows future users to:
 
 - increase hardware compactness through PCB redesign
-- integrate additional sensing capabilities
-- add payload support such as cameras or telemetry radios
-- modify or extend the Linux HAL board definition
-- migrate the architecture to alternative embedded processors
+- add functionality by including cameras or telemetry radios
+- Apply these porting methods to other operating systems such as ChibiOS.
 
 Because of this, EDUCOPTER can act as a starting point for students and researchers interested in exploring **custom ArduPilot flight controller development**.
 
@@ -67,7 +65,7 @@ These components provide useful feedback during:
 - arming conditions
 - failsafe events
 
-Adding these indicators would improve usability during setup and flight testing.
+Adding these indicators would improve usability during setup and flight testing. They weren't included in this design due to the difficulty of implementation on a single-sided circuit board.
 
 
 ## Integrated power distribution
@@ -78,23 +76,20 @@ This approach was considered during development but was intentionally avoided in
 
 - reduce board complexity
 - simplify manufacturing
-- lower overall project cost
 - avoid routing high-current battery power on a single-sided PCB
 
 Routing higher voltages across small PCB tracks introduces additional safety constraints, particularly when operating from a 4S LiPo supply. For this reason, integrated power distribution would likely be more appropriate for **smaller drone platforms operating at lower voltages**.
 
-Future multi-layer PCB versions of EDUCOPTER could explore this direction further.
+Future multi-layer PCB versions of EDUCOPTER could explore this direction further, reducing cost, weight and complexity of quadcopters.
 
 
-## Additional payload integration
+## Additional sensor integration
 
 The communication architecture used in this project allows straightforward integration of additional peripherals such as:
 
 - cameras
 - telemetry radios
 - optical flow sensors
-- rangefinders
-- companion processing modules
 
 For example, integrating a camera would allow:
 
@@ -102,7 +97,7 @@ For example, integrating a camera would allow:
 - visual navigation experiments
 - onboard autonomy research
 
-Because ArduPilot already supports MAVLink-based payload interaction, these additions can be implemented without significant architectural changes.
+Because ArduPilot already supports MAVLink-based interaction, these additions can be implemented directly without significant architectural changes and without the need for a companion computer.
 
 
 ## Real-time ESP32-based autopilot variants
@@ -112,4 +107,13 @@ A further research direction would be implementing a similar architecture using 
 Linux provides flexibility and accessibility for development, but it does not provide deterministic timing behaviour for control loops. Microcontroller-based systems running RTOS environments can achieve higher loop execution stability and are commonly used in dedicated flight controllers.
 
 A comparable architectural structure to the Linux porting workflow shown in this repository can be found within:
+
+- libraries/AP_HAL_ESP32
+- libraries/AP_HAL_ChibiOS
+
+Depending on the processor to be used.
+
+## Summary
+
+I hope you find this repository useful for future work tackling custom ArduPilot flight controllers. As a second reference page, the OBAL repository offers useful Linux support. 
 
