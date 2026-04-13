@@ -52,8 +52,8 @@ EDUCOPTER/
 ├── software/
 ├── hardware/
 ├── BOM/
-└── flying/
-└── testing/
+├── flying/
+├── testing/
 ├── Future Research/
 ```
 
