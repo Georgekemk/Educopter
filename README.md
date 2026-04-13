@@ -126,6 +126,22 @@ BOM/
 
 ---
 
+## Testing the flight controller
+
+The testing section documents the procedures used to verify correct operation of the EDUCOPTER flight controller before flight.
+
+This section contains:
+
+* Instructions for confirming SPI communication with the IMU
+* Instructions for verifying I2C device detection for the barometer and PWM driver
+* Instructions for testing UART connections for the GPS module and RC receiver
+
+```
+testing/
+└── README.md
+```
+---
+
 # Flying the Drone
 
 The **flying** section demonstrates the final stage of the project.
@@ -141,6 +157,18 @@ flying/
 └── README.md
 ```
 
+---
+
+## Future Research
+
+The future section then outlines possible extensions to the EDUCOPTER platform and identifies directions for further experimentation based on this architecture.
+
+```
+Future Research/
+└── README.md
+```
+
+---
 
 # Replicating the Project
 
