@@ -53,6 +53,7 @@ EDUCOPTER/
 ├── hardware/
 ├── BOM/
 └── flying/
+└── testing/
 ├── Future Research/
 ```
 
